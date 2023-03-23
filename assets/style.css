@@ -1,0 +1,276 @@
+/* reset */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --header-h: 90px;
+    --aside-w: 230px;
+    --player-h: 90px;
+    --white: #FFFFFF;
+    --silver: #A3A3A3;
+    --dim-gray: #6D6D6D;
+    --raisin-black: #282828;
+    --black: #000000;
+    --green-yellow: #ADFF2F;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.svg_white path {
+    fill: var(--white);
+}
+
+.svg_grey path {
+    fill: var(--dim-gray);
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--dim-gray);
+}
+
+/* posizionamento */
+
+header, main, aside, .player {
+    position: fixed;
+}
+
+header {
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-h);
+}
+
+aside {
+    top: 0;
+    left: 0;
+    bottom: var(--player-h);
+    width: var(--aside-w);
+}
+
+main {
+    top: var(--header-h);
+    left: var(--aside-w);
+    right: 0;
+    bottom: var(--player-h);
+}
+
+.player {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: var(--player-h);
+}
+
+/* header */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 1;
+    background-color: var(--black);
+    opacity: 0.95;
+}
+
+.upgrade_btn {
+    margin-inline-end: 10px;
+}
+
+.upgrade_btn a {
+    display: inline-block;
+    padding: 0.9em 2.6em;
+    border: 1px solid white;
+    border-radius: 2.5em;
+    color: var(--white);
+}
+
+/* aside */
+
+aside {
+    --padding-inline: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+    background-color: var(--black);
+}
+
+aside li a {
+    padding: 0.4rem 0;
+    padding-inline: var(--padding-inline);
+    display: flex;
+    align-items: center;
+}
+
+aside a:hover {
+    color: var(--white);
+}
+
+aside a:hover path {
+    fill: var(--white);
+}
+
+.menu span, .install span, .profile span {
+    margin-inline-start: 10px;
+}
+
+.menu {
+    margin-bottom: 1.75rem;
+}
+
+.icon svg {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.active {
+    position: relative;
+}
+
+.active::before {
+    content: "";
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    border-inline-start: 2px solid var(--green-yellow);
+}
+
+.active a {
+    color: var(--white);
+}
+
+.logo {
+    height: var(--header-h);
+    padding-inline: var(--padding-inline);
+    display: flex;
+    align-items: center;
+}
+
+.logo svg {
+    height: 2.5rem;
+    width: auto;
+    margin-inline-end: 0;
+}
+
+.logo_small {
+    display: none;
+    padding-inline: 0.7rem;
+}
+
+.playlist {
+    flex: 1 0 0;
+}
+
+.playlist li a {
+    padding: 0.75rem 0;
+    padding-inline: var(--padding-inline);
+}
+
+.playlist .title {
+    font-size: 0.8rem;
+    padding-inline: var(--padding-inline);
+    color: var(--white);
+}
+
+.create_playlist a span {
+    height: 2.25rem;
+    width: 2.25rem;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-inline-end: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--silver);
+    color: var(--black);
+}
+
+.create_playlist a:hover span {
+    background-color: whitesmoke;
+}
+
+.install a {
+    display: flex;
+    align-items: center;
+    padding-inline: var(--padding-inline);
+}
+
+.install svg {
+    height: 1.2rem;
+    width: 1.2rem;
+}
+
+.install path {
+    width: 100%;
+}
+
+.install::after {
+    content: " ";
+    display: block;
+    margin: 0.75rem 1.5rem 0.25rem;
+    border-bottom: 1px solid var(--dim-gray);
+}
+
+.profile a {
+    padding: 0.5rem 0;
+    padding-inline: var(--padding-inline);
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: var(--white);
+}
+
+.profile svg {
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    background-color: var(--dim-gray);
+}
+
+@media (max-width: 552px) {
+    :root {
+        --aside-w: 50px;
+    }
+
+    aside {
+        --padding-inline: 0.7rem;
+    }
+
+    .icon svg{
+        width: 100%;
+    }
+
+    .menu span, .install span, .profile span {
+        display: none;
+    }
+
+    .menu {
+        flex: 1 0 0;
+        padding-top: 0.5rem;
+    }
+
+    .logo, .playlist, .active::before, .install::after {
+        display: none;
+    }
+
+    .logo_small {
+        display: block;
+    }
+}
+
+.player {
+    height: 90px;
+    background-color: var(--raisin-black);
+}
