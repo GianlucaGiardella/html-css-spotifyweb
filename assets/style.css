@@ -14,6 +14,7 @@
     --silver: #A3A3A3;
     --dim-gray: #6D6D6D;
     --raisin-black: #282828;
+    --rich-black: #141922;
     --black: #000000;
     --green-yellow: #ADFF2F;
 }
@@ -134,11 +135,11 @@ aside a:hover path {
     width: 1.5rem;
 }
 
-.active {
+.menu .active {
     position: relative;
 }
 
-.active::before {
+.menu .active::before {
     content: "";
     display: block;
     height: 100%;
@@ -147,7 +148,7 @@ aside a:hover path {
     border-inline-start: 2px solid var(--green-yellow);
 }
 
-.active a {
+.menu .active a {
     color: var(--white);
 }
 
@@ -269,6 +270,56 @@ aside a:hover path {
         display: block;
     }
 }
+
+/* main */
+
+main {
+    background-color: var(--rich-black);
+}
+
+.navbar {
+    font-size: 0.8rem;
+    padding: 1.4rem 2.4rem;
+    margin-bottom: 2.2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    row-gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    display: block;
+    padding: 0.5rem 0.25rem;
+}
+
+.navbar a:hover {
+    color: var(--white);
+} 
+
+.navbar .active {
+    position: relative;
+}
+
+.navbar .active::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    left: 35%;
+    right: 35%;
+    bottom: 0;
+    border-bottom: 2px solid var(--green-yellow);
+}
+
+
+
+
+
+
+
+
+
+
 
 .player {
     height: 90px;
