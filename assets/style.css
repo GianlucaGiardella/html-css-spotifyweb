@@ -21,6 +21,7 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    background-color: var(--rich-black);
 }
 
 .svg_white path {
@@ -40,7 +41,7 @@ a {
     color: var(--dim-gray);
 }
 
-/* posizionamento */
+/* posizion */
 
 header, main, aside, .player {
     position: fixed;
@@ -51,6 +52,7 @@ header {
     left: 0;
     right: 0;
     height: var(--header-h);
+    z-index: 3;
 }
 
 aside {
@@ -58,13 +60,15 @@ aside {
     left: 0;
     bottom: var(--player-h);
     width: var(--aside-w);
+    z-index: 6;
 }
 
 main {
-    top: var(--header-h);
+    top: 0;
     left: var(--aside-w);
     right: 0;
     bottom: var(--player-h);
+    z-index: 1;
 }
 
 .player {
@@ -72,6 +76,7 @@ main {
     right: 0;
     bottom: 0;
     height: var(--player-h);
+    z-index: 9;
 }
 
 /* header */
@@ -80,13 +85,12 @@ header {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    z-index: 1;
     background-color: var(--black);
-    opacity: 0.95;
+    opacity: 0.6;
 }
 
 .upgrade_btn {
-    margin-inline-end: 10px;
+    margin-inline: 1.5rem;
 }
 
 .upgrade_btn a {
@@ -97,13 +101,17 @@ header {
     color: var(--white);
 }
 
+.upgrade_btn a:hover {
+    transform: scale(1.1);
+}
+
 /* aside */
 
 aside {
     --padding-inline: 1.5rem;
     display: flex;
     flex-direction: column;
-    z-index: 2;
+    overflow: hidden;
     background-color: var(--black);
 }
 
@@ -172,6 +180,7 @@ aside a:hover path {
 
 .playlist {
     flex: 1 0 0;
+    margin-bottom: 1rem;
 }
 
 .playlist li a {
@@ -240,7 +249,7 @@ aside a:hover path {
     background-color: var(--dim-gray);
 }
 
-@media (max-width: 552px) {
+@media (max-width: 600px) {
     :root {
         --aside-w: 50px;
     }
@@ -249,7 +258,11 @@ aside a:hover path {
         --padding-inline: 0.7rem;
     }
 
-    .icon svg{
+    aside li {
+        margin-bottom: 0.5rem;
+    }
+
+    .icon svg {
         width: 100%;
     }
 
@@ -262,7 +275,7 @@ aside a:hover path {
         padding-top: 0.5rem;
     }
 
-    .logo, .playlist, .active::before, .install::after {
+    .logo, .playlist, .menu .active::before, .install::after {
         display: none;
     }
 
@@ -274,17 +287,21 @@ aside a:hover path {
 /* main */
 
 main {
-    background-color: var(--rich-black);
+    padding-top: var(--header-h);
+    overflow-y: scroll;
+}
+
+.main_title {
+    flex: 0 0 100%;
+    color: var(--white);
 }
 
 .navbar {
     font-size: 0.8rem;
     padding: 1.4rem 2.4rem;
-    margin-bottom: 2.2rem;
     display: flex;
     justify-content: center;
-    gap: 1rem;
-    row-gap: 2rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
 }
 
@@ -295,7 +312,7 @@ main {
 
 .navbar a:hover {
     color: var(--white);
-} 
+}
 
 .navbar .active {
     position: relative;
@@ -311,6 +328,84 @@ main {
     border-bottom: 2px solid var(--green-yellow);
 }
 
+.recent {
+    --card: 6;
+    --gap: 1rem;
+    padding: 0 1.5rem;
+    margin-bottom: 2.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+}
+
+.recent .main_title {
+    margin-bottom: 0.8rem;
+}
+
+.card {
+    flex: 0 0 calc((100% - (var(--card) - 1) * var(--gap)) / var(--card));
+    text-align: center;
+}
+
+.card a {
+    display: block;
+}
+
+.card_img {
+    position: relative;
+}
+
+.card_img:hover::before {
+    content: " ";
+    position: absolute;
+    inset: 0;
+    background-color: var(--black);
+    opacity: 0.5;
+}
+
+.card_img img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 1.2rem;
+}
+
+.card_img:hover::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512' fill='%23ffffff'%3E%3C!--! Font Awesome Pro 6.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --%3E%3Cpath d='M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z'/%3E%3C/svg%3E");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 25%;
+}
+
+.card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--white);
+}
+
+.card h4 {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--dim-gray);
+}
+
+@media (max-width: 900px) {
+    .recent {
+        --card: 4;
+    }
+}
+
+@media (max-width: 650px) {
+    .recent {
+        --card: 2;
+    }
+}
+
+
 
 
 
@@ -322,6 +417,5 @@ main {
 
 
 .player {
-    height: 90px;
     background-color: var(--raisin-black);
 }
