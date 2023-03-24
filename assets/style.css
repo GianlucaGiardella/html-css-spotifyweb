@@ -32,6 +32,14 @@ body {
     fill: var(--dim-gray);
 }
 
+.dimgrey {
+    color: var(--dim-gray);
+}
+
+.white {
+    color: var(--white);
+}
+
 ul {
     list-style: none;
 }
@@ -86,7 +94,7 @@ header {
     align-items: center;
     justify-content: flex-end;
     background-color: var(--black);
-    opacity: 0.6;
+    opacity: 0.7;
 }
 
 .upgrade_btn {
@@ -249,6 +257,8 @@ aside a:hover path {
     background-color: var(--dim-gray);
 }
 
+/* aside media */
+
 @media (max-width: 600px) {
     :root {
         --aside-w: 50px;
@@ -396,7 +406,17 @@ main {
     color: var(--white);
 }
 
-@media (max-width: 900px) {
+/* artist card */
+
+.artists .card_img {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+/* main media */
+
+@media (max-width: 1100px) {
     .recent {
         --card: 4;
     }
@@ -408,23 +428,119 @@ main {
     }
 }
 
-.artists .card_img {
-    aspect-ratio: 1 / 1;
-    border-radius: 50%;
-    overflow: hidden;
-}
-
-
-
-
-
-
-
-
-
-
-
+/* player */
 
 .player {
+    display: flex;
+    align-items: center;
+    padding-inline: 1rem;
+    gap: 1rem;
     background-color: var(--raisin-black);
+}
+
+.song, .options {
+    flex: 0 0 calc(25% - 1rem);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.controls {
+    flex: 1 0 0;
+}
+
+.player a i:hover {
+    color: var(--white);
+}
+
+.player a i {
+    padding: 0.3rem;
+}
+
+/* song */
+
+.song {
+    align-items: center;
+}
+
+.song_img img {
+    width: 2.5rem;
+    aspect-ratio: 1 / 1;
+}
+
+.song_options {
+    flex: 1 0 0;
+    text-align: end;
+}
+
+.song_name h3 {
+    font-size: 1rem;
+}
+
+.song_name p a {
+    display: block;
+    font-size: 0.8rem;
+}
+
+.song_name a:hover {
+    color: var(--white);
+    text-decoration: underline;
+}
+
+/* controls */
+
+.controls .buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.controls .buttons i, .options i {
+    color: var(--white);
+}
+
+.controls .buttons i {
+    font-size: 1.3rem;
+}
+
+.controls .buttons .xl i {
+    font-size: 2rem;
+    padding: 0.4rem;
+}
+
+.time {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--white);
+}
+
+.time .line {
+    width: 50%;
+    min-width: 8rem;
+    background-color: var(--dim-gray);
+}
+
+.time .line>div {
+    width: 9%;
+    border: 3px solid var(--white);
+}
+
+.line:hover {
+    cursor: pointer;
+}
+
+/* options */
+
+.options .line {
+    min-width: 4rem;
+    flex: 1 0 0;
+    background-color: var(--dim-gray);
+}
+
+.options .line div {
+    width: 25%;
+    border: 3px solid var(--white);
 }
