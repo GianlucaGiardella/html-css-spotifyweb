@@ -291,11 +291,6 @@ main {
     overflow-y: scroll;
 }
 
-.main_title {
-    flex: 0 0 100%;
-    color: var(--white);
-}
-
 .navbar {
     font-size: 0.8rem;
     padding: 1.4rem 2.4rem;
@@ -328,7 +323,9 @@ main {
     border-bottom: 2px solid var(--green-yellow);
 }
 
-.recent {
+/* album reset */
+
+.album {
     --card: 6;
     --gap: 1rem;
     padding: 0 1.5rem;
@@ -338,8 +335,20 @@ main {
     gap: var(--gap);
 }
 
-.recent .main_title {
-    margin-bottom: 0.8rem;
+.main_title {
+    flex: 0 0 100%;
+}
+
+.main_title h2 {
+    color: var(--white);
+    margin-bottom: 0.3rem;
+}
+
+.main_title p {
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+    color: var(--dim-gray);
 }
 
 .card {
@@ -353,6 +362,7 @@ main {
 
 .card_img {
     position: relative;
+    margin-bottom: 1.2rem;
 }
 
 .card_img:hover::before {
@@ -367,7 +377,6 @@ main {
     display: block;
     width: 100%;
     aspect-ratio: 1 / 1;
-    margin-bottom: 1.2rem;
 }
 
 .card_img:hover::after {
@@ -387,22 +396,22 @@ main {
     color: var(--white);
 }
 
-.card h4 {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--dim-gray);
-}
-
 @media (max-width: 900px) {
     .recent {
         --card: 4;
     }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 700px) {
     .recent {
         --card: 2;
     }
+}
+
+.artists .card_img {
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    overflow: hidden;
 }
 
 
