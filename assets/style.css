@@ -417,13 +417,13 @@ main {
 /* main media */
 
 @media (max-width: 1100px) {
-    .recent {
+    .recent, .created, .artists {
         --card: 4;
     }
 }
 
 @media (max-width: 700px) {
-    .recent {
+    .recent, .created, .artists {
         --card: 2;
     }
 }
@@ -439,10 +439,9 @@ main {
 }
 
 .song, .options {
-    flex: 0 0 calc(25% - 1rem);
+    flex: 0 0 18%;
     display: flex;
     align-items: center;
-    gap: 0.3rem;
 }
 
 .controls {
@@ -454,7 +453,7 @@ main {
 }
 
 .player a i {
-    padding: 0.3rem;
+    padding: 0.4rem;
 }
 
 /* song */
@@ -463,7 +462,12 @@ main {
     align-items: center;
 }
 
+.song_img {
+    margin-inline-end: 1rem;
+}
+
 .song_img img {
+    display: block;
     width: 2.5rem;
     aspect-ratio: 1 / 1;
 }
@@ -473,18 +477,27 @@ main {
     text-align: end;
 }
 
+.song_name {
+    flex: 1 0 0;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 .song_name h3 {
     font-size: 1rem;
 }
 
 .song_name p a {
-    display: block;
     font-size: 0.8rem;
 }
 
-.song_name a:hover {
+.song_name p a:hover {
     color: var(--white);
     text-decoration: underline;
+}
+
+.song_options {
+    display: flex;
 }
 
 /* controls */
@@ -519,28 +532,77 @@ main {
 
 .time .line {
     width: 50%;
-    min-width: 8rem;
+    min-width: 7rem;
+    max-height: 4px;
+    display: flex;
+    align-items: center;
     background-color: var(--dim-gray);
 }
 
 .time .line>div {
     width: 9%;
-    border: 3px solid var(--white);
-}
-
-.line:hover {
-    cursor: pointer;
+    border: 2px solid var(--white);
 }
 
 /* options */
 
+.options {
+    justify-content: flex-end;
+}
+
 .options .line {
-    min-width: 4rem;
+    min-width: 3.5rem;
+    max-width: 7rem;
+    max-height: 4px;
     flex: 1 0 0;
+    display: flex;
+    align-items: center;
     background-color: var(--dim-gray);
 }
 
 .options .line div {
     width: 25%;
-    border: 3px solid var(--white);
+    border: 2px solid var(--white);
+}
+
+.line:hover::after {
+    content: " ";
+    width: 0.8rem;
+    height: 0.8rem;
+    border-radius: 50%;
+    background-color: var(--white);
+}
+
+.line:hover {
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.line:hover div{
+    border-color: var(--green-yellow);
+}
+
+@media (max-width: 600px) {
+    .player {
+        padding-inline: 0.5rem;
+        gap: 0;
+    }
+
+    .song_name, .options .line {
+        display: none;
+    }
+
+    .song_img {
+        margin-inline-end: 0;
+    }
+
+    .song_options {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 460px) {
+    .song, .options {
+        display: none;
+    }
 }
