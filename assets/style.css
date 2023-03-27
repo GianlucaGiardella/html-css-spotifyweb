@@ -468,7 +468,7 @@ main {
 
 .song_img img {
     display: block;
-    width: 2.5rem;
+    width: 3.2rem;
     aspect-ratio: 1 / 1;
 }
 
@@ -530,56 +530,59 @@ main {
     color: var(--white);
 }
 
-.time .line {
-    width: 50%;
-    min-width: 7rem;
-    max-height: 4px;
-    display: flex;
-    align-items: center;
-    background-color: var(--dim-gray);
-}
-
-.time .line>div {
-    width: 9%;
-    border: 2px solid var(--white);
-}
-
 /* options */
 
 .options {
     justify-content: flex-end;
 }
 
+/* line */
+
+.controls .line {
+    --active: 9%;
+}
+
 .options .line {
-    min-width: 3.5rem;
-    max-width: 7rem;
-    max-height: 4px;
-    flex: 1 0 0;
-    display: flex;
-    align-items: center;
-    background-color: var(--dim-gray);
+    --active: 85%;
 }
 
-.options .line div {
-    width: 25%;
-    border: 2px solid var(--white);
-}
-
-.line:hover::after {
+.player .line::before {
     content: " ";
-    width: 0.8rem;
-    height: 0.8rem;
-    border-radius: 50%;
+    display: block;
+    width: var(--active);
+    height: 100%;
+    border-radius: 4px;
     background-color: var(--white);
 }
 
-.line:hover {
-    overflow: hidden;
+.player .line {
+    position: relative;
+    min-width: 4rem;
+    height: 4px;
+    flex: 0 0 45%;
+    border-radius: 4px;
+    background-color: var(--dim-gray);
+}
+
+.player .line {
     cursor: pointer;
 }
 
-.line:hover div{
-    border-color: var(--green-yellow);
+.player .line:hover::before {
+    background-color: var(--green-yellow);
+}
+
+.player .line:hover::after {
+    content: " ";
+    display: block;
+    height: 300%;
+    aspect-ratio: 1 / 1;
+    position: absolute;
+    top: -100%;
+    left: var(--active);
+    transform: translateX(-50%);
+    border-radius: 50%;
+    background-color: var(--white);
 }
 
 @media (max-width: 600px) {
